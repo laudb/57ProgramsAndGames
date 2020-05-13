@@ -1,0 +1,1 @@
+These programs are from a real book, although an old one. My purpose is to re-write these programs in modern programming languages. Reasons behind doing so are more of a sentimental kind, perhaps the story on this could go on that blog..
