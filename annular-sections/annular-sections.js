@@ -25,7 +25,7 @@
           J = polarMomentOfInertia(d1, d2);
           A = area(d1, d2);
           
-          console.log(`Moment of Inertia = ${I} inches \n Polar Moment of Inertia = ${J} inches \n Area = ${A} inches`);
+          console.log(`Moment of Inertia = ${I} inches^3 \n Polar Moment of Inertia = ${J} inches^3 \n Area = ${A} inches^2`);
 
           ri.close();
 
