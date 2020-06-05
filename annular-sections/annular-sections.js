@@ -20,6 +20,11 @@
       ri.question('Enter the inside diameter (D1) in inches: ', function (d1) {
 
         ri.question('Enter the outside diameter (D2) in inches: ', function (d2) {
+        
+          // if (typeof d1 !== 'number' || typeof d2 !== 'number') {
+          //   console.log('Please enter numbers only');
+          //   ri.close();
+          // }
           
           I = momentOfInertia(d1, d2);
           J = polarMomentOfInertia(d1, d2);
@@ -42,6 +47,7 @@
 
     function momentOfInertia(d1, d2) {
       // I = (PI* ( ( (d2**4)-(d1**4) ) /64) );
+
       let a = (d1**4);
       let b = (d2**4); 
       let c = ( (b -a)/64 );
@@ -51,6 +57,7 @@
 
     function polarMomentOfInertia(d1,d2) {
     // J =  PI* ( ( (d2**2) - (d1**2) ) /4 ) )
+
       let a = (d1**2);
       let b = (d2**2);
       let c = ( (b - a) / 4);
@@ -60,6 +67,7 @@
 
     function area(d1,d2) {
     //  A = PI*(((d2**4) - (d1**4))/32)  )
+
       let a = (d1**4);
       let b = (d2**4);
       let c = ( (b - a) / 32 );
