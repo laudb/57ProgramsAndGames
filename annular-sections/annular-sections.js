@@ -1,5 +1,5 @@
 // set constants
-// request for inside diameter
+// request for inner diameter
 // request for outer diameter
 // return results (moment of inertia, polar moment of inertia, area)
 // request to Continue or Stop
@@ -27,7 +27,7 @@
           
           console.log(`Moment of Inertia = ${I} inches^3 \n Polar Moment of Inertia = ${J} inches^3 \n Area = ${A} inches^2`);
 
-          ri.close();
+          ri.close(); // should stop depending on user choice
 
         });
       });
