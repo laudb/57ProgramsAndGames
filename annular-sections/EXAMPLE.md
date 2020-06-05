@@ -1,6 +1,7 @@
 ANNULAR SECTIONS
 This program computes the various paramters; moment of inertia, polar moment of inertia and area; connected 
-with an annular section.
+with an annular section. I,J in.^3 and A in in.^2
+
 
 
 EXAMPLE
