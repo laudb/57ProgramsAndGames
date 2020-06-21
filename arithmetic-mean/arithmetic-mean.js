@@ -4,7 +4,7 @@ const readline = require('readline');
 // assign 0 to x and n
 let x = n = mean = 0;
 
-// prompt + input sample
+// setup readline instance
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -20,8 +20,8 @@ function getInput() {
 }
 
 function computeInput (sample) {
-    n += 1;
-    x += (+sample); // new sample inpute + current sum
+    n += 1;  // counter      
+    x += (+sample); // new sample input + current sum
     mean = x / n; 
 
     console.log( `N=${n} SAMPLE=${x} CURRENT_MEAN=${mean}` ); // output current mean
