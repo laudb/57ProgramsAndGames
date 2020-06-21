@@ -3,7 +3,6 @@
 const readline = require('readline');
 // assign 0 to x and n
 let x = n = mean = 0;
-let condition = false;
 
 // prompt + input sample
 const rl = readline.createInterface({
@@ -14,7 +13,6 @@ const rl = readline.createInterface({
 function getInput() {
     rl.question('Enter Sample ', function(sample) { // take user input
         if (sample === 'end') {
-            condition = false
             rl.close();
         } 
         else computeInput (sample); // if input is not 'end', take input and compute.
