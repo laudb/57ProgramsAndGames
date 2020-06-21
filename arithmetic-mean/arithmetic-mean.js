@@ -2,7 +2,8 @@
 
 const readline = require('readline');
 // assign 0 to x and n
-let x , n = 0;
+let x = n = mean = 0;
+let condition = false;
 
 // prompt + input sample
 const rl = readline.createInterface({
@@ -10,25 +11,25 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-console.log('This program computes the arithmetic mean ')
+function getInput() {
+    rl.question('Enter Sample ', function(sample) { // take user input
+        if (sample === 'end') {
+            condition = false
+            rl.close();
+        } 
+        else computeInput (sample); // if input is not 'end', take input and compute.
+    });
+}
 
-rl.question('Enter sample ', (sample) => {
-    
-    if (sample === 'end') {
-        console.log('Ending')
-        rl.close();
-    }
+function computeInput (sample) {
+    n += 1;
+    x += (+sample); // new sample inpute + current sum
+    mean = x / n; 
 
-    n = n + 1
-    x = x + sample
+    console.log( `N=${n} SAMPLE=${x} CURRENT_MEAN=${mean}` ); // output current mean
+    getInput(); // prompt user for new input
+}
 
-})
+getInput();
 
-rl.on('close', () => console.log('End'))
-
-// calculate sample nuber + current mean
-
-// output current mean
-
-// if input is not end, repeat step 2
-
+rl.on('close', () => console.log('End'));
