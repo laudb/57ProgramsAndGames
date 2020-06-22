@@ -16,7 +16,7 @@ if current_folder != '57ProgramsAndGames':
 
 if len(sys.argv) < 2:
     print('Please add name of the project while running this command')
-
+    sys.exit()
 
 # take the cleaned argument from the commandline.
 project_name = sys.argv[1]
@@ -26,30 +26,45 @@ print(project_name)
 project_name = project_name.lower()
 
 # create folder using the validated input.
-os.mkdir(project_name)
+# # confirm that folder exists, then change into folder. 
+if os.path.exists(project_name):
+    print('Project Folder already exisits')
+    sys.exit()
+else:
+    os.mkdir(project_name)
 
 extensions = ['bas','md','js']
 # create the files in the folder with validated input: [PROJECT_NAME.BAS, project_name.js, EXAMPLE.md].
 # files.append(project_name, 'example')
+## ugly file creator
+
 files = []
-for one in extensions:
-        
+
+for extension in extensions:
+    if extension == 'bas':
+        file = str(project_name)
+        file = file.upper()
+        extension = extension.upper()
+        file = str(file)+'.'+str(extension)
+        files.append(file)
+    elif extension == 'md':
+        file = 'example'
+        file = file.upper()
+        extension = extension.upper()
+        file = str(file)+'.'+str(extension)
+        files.append(file)
+    elif extension == 'js':
+        file = str(project_name)
+        file = file.lower()
+        extension = extension.lower()
+        file = str(file)+'.'+str(extension)
+        files.append(file)
+    else:
+        print('unhandled case', extension)
+
 
 # project_name = project_name.upper()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(files)
 
 
 
@@ -60,11 +75,8 @@ for one in extensions:
 #     pass
 
 
-
-
-# file_array = []
-
-# os.path.join(current_path, project_name
+for file in files:
+    print(os.path.join(current_path, project_name, file))
 
 # Give feedback to the user about number of files created and display files names.
 
