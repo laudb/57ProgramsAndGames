@@ -2,7 +2,7 @@
 
 '''
 This program creates a new folder and the needed files
-for each chapter of this project.
+for each chapter of this project from the user input.
 '''
 
 # import the relevant packages
