@@ -2,8 +2,7 @@
 
 const readline = require('readline');
 const promisify = require('util');
-// const f, d, t, option = 0;
-let a = d = n = c = t = i = j = k = l= 0;
+let a = d = t = i = j = k = l= 0;
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -22,18 +21,21 @@ rl.question("First term ", function( first ) {
                     rl.close()
                 }
                 
-                a = first;
-                d += difference;
-                t += terms;
+                a = (+first);
+                d = (+difference);
+                t = (+terms);
                 console.log('ARITHMETIC PROGRESSION')
                 console.log('TERM NUMBER','----------','TERM VALUE')
-                for (let i = 0; i < terms.length; i++) {
+
+                for (let i = 0; i < t; i++) {
                     k = i + 1;
-                    l = first + (i * difference )
+                    l = a + (i * d )
                     j += l
+
                     console.log(k,'                   ', l)
                 }
                 console.log('Sum = ', j);
+
 
             })
         })
