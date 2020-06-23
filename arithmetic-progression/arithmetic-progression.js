@@ -2,43 +2,64 @@
 
 const readline = require('readline');
 const promisify = require('util');
-let a = d = t = i = j = k = l= 0;
+let a = d = t = i = k = l= 0.0;
 
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-rl.question("First term ", function( first ) {
 
-    rl.question("common difference ", function( difference ) {
-    
-        rl.question("number of terms ", function ( terms ) {
+let main = () => {
+    userFunction();
+}
 
-            rl.question("for table type 1, if not type 0 ", function ( table ) {
+let userFunction = () => {
+    rl.question("First term ", function( first ) {
 
-                if (table === 0) {
-                    rl.close()
-                }
-                
-                a = (+first);
-                d = (+difference);
-                t = (+terms);
-                console.log('ARITHMETIC PROGRESSION')
-                console.log('TERM NUMBER','----------','TERM VALUE')
+        rl.question("common difference ", function( difference ) {
+        
+            rl.question("number of terms ", function ( terms ) {
 
-                for (let i = 0; i < t; i++) {
-                    k = i + 1;
-                    l = a + (i * d )
-                    j += l
+                rl.question("for table type 1, if not type 0: ", function ( table ) {
 
-                    console.log(k,'                   ', l)
-                }
-                console.log('Sum = ', j);
+                    if (table === 0) {
+                        rl.close()
+                    }
+                    arithmetic_progression(first, difference, terms);
 
+                });
+            });
+        });
+    });
+}
 
-            })
-        })
-    })
+let arithmetic_progression = (a,d,t) => {
+    console.log('ARITHMETIC PROGRESSION');
+    console.log('TERM NUMBER','----------','TERM VALUE');
 
-})
+    a = (+a);
+    d = (+d);
+    t = (+t);
+    j = 0;
+
+    for (let i = 0; i < t; i++) {
+        k = i + 1;
+        l = a + (i * d )
+        j += l
+
+        console.log(k,'                   ', l);
+    }
+    console.log('Sum = ', j); 
+
+    rl.question("Type 1 to continue, 0 to stop: ", function (option) {
+        if ( option == 0 ) {
+            console.log('END');
+            rl.close();
+        } else {
+            userFunction()
+        }
+    });
+}
+
+main();
