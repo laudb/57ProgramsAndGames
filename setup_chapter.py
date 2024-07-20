@@ -5,31 +5,31 @@ This program creates a new folder and the needed *.BAS, *.MD, *.JS files
 for each chapter of this project from the user input.
 """
 
-# import the relevant packages
-import os, sys
 
+def initialize_project():
+    """
+    Create initial folder and return folder path.
+    """
+    # setup project
+    base_folder = os.getcwd()
+    current_folder = base_folder.split("/")[-1]
+    print("Currently working from ", current_folder)
 
-# setup project
-current_path = os.getcwd()
-current_folder = current_path.split("/")[-1]
-destination_folder = "chapters"
-print("Currently working from ", current_folder)
+    if current_folder != "57ProgramsAndGames":
+        print("Please navigate to root folder")
+        sys.exit()
 
-if current_folder != "57ProgramsAndGames":
-    print("Please navigate to root folder")
-    sys.exit()
+    if len(sys.argv) < 2:
+        print("Please add name of the project while running this command")
+        sys.exit()
 
-if len(sys.argv) < 2:
-    print("Please add name of the project while running this command")
-    sys.exit()
-
-
-# take the cleaned argument from the commandline.
-user_input = sys.argv[1]
-project_name = user_input.lower()
+    return base_folder
 
 
 def create_project_path(folder_name):
+    """
+    Create folder if it does not exist.
+    """
     project_path = f"chapters/{folder_name}"
     print(project_path)
     # check that folder exists first, create folder using the validated input.
@@ -89,8 +89,23 @@ def generate_files(input_path, files):
         return False
 
 
+# import the relevant packages
+import os, sys
+
+# create initial values
+current_path = initialize_project()
+
+# take the cleaned argument from the commandline.
+user_input = sys.argv[1]
+project_name = user_input.lower()
+
+# get path,
 project_path = create_project_path(project_name)
+
+# generate file names
 generated_file_names = generate_file_names(project_name)
+
+# generate files
 full_path = f"{current_path}/{project_path}"
 generate_files(full_path, generated_file_names)
 
