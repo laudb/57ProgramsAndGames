@@ -1,9 +1,13 @@
 #! python3
 
+
 """
 This program creates a new folder and the needed *.BAS, *.MD, *.JS files
 for each chapter of this project from the user input.
 """
+
+# import the relevant packages
+import os, sys
 
 
 def initialize_project():
@@ -89,26 +93,29 @@ def generate_files(input_path, files):
         return False
 
 
-# import the relevant packages
-import os, sys
+def main():
 
-# create initial values
-current_path = initialize_project()
+    # create initial values
+    current_path = initialize_project()
 
-# take the cleaned argument from the commandline.
-user_input = sys.argv[1]
-project_name = user_input.lower()
+    # take the cleaned argument from the commandline.
+    user_input = sys.argv[1]
+    project_name = user_input.lower()
 
-# get path,
-project_path = create_project_path(project_name)
+    # get path,
+    project_path = create_project_path(project_name)
 
-# generate file names
-generated_file_names = generate_file_names(project_name)
+    # generate file names
+    generated_file_names = generate_file_names(project_name)
 
-# generate files
-full_path = f"{current_path}/{project_path}"
-generate_files(full_path, generated_file_names)
+    # generate files
+    full_path = f"{current_path}/{project_path}"
+    generate_files(full_path, generated_file_names)
 
-# Give feedback to the user about number of files created and display files names.
-new_files = os.listdir(full_path)
-print(len(new_files), " files created ", new_files)
+    # Give feedback to the user about number of files created and display files names.
+    new_files = os.listdir(full_path)
+    print(len(new_files), " files created ", new_files)
+
+
+if __name__ == "__main__":
+    main()
